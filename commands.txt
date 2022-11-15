@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+sshpass -p  private ssh admin@192.168.0.254
+dhcp-service server port-local 2 status enable
+dhcp-service server port-local 2 net-mask 255.255.255.000
+dhcp-service server port-local 2 local-ip 192.168.0.7
+sleep 10
+
+curl "http://192.168.0.254/php/command.php?usr=admin&pwd=private&cmd=port%202%20admin-mode%20disa
+ble"
